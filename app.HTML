@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreaksHub | No Rompas el Ciclo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="welcome-popup" class="popup hidden">
+        <div class="popup-content">
+            <p>✨ ¡Bienvenido! En la pestaña <b>Perfil</b> puedes personalizar tu cuenta y crear nuevas metas.</p>
+            <button onclick="closePopup()">Entendido</button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">STREAK<span>HUB</span></div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showTab('dashboard')" id="nav-dash" class="active">Dashboard</a></li>
+            <li><a href="#" onclick="showTab('profile')" id="nav-prof">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main id="tab-dashboard" class="dashboard">
+        <section class="main-column">
+            <div class="streak-card principal">
+                <div class="user-preview">
+                    <img id="dash-avatar" src="https://via.placeholder.com/50" alt="avatar">
+                    <span id="dash-username">Usuario</span>
+                </div>
+                <h2>Racha Principal</h2>
+                <div class="streak-display">
+                    <span id="streak-personal">0</span>
+                </div>
+                <button onclick="handleStreak('personal')" id="btn-personal" class="action-btn">¡Día Completado!</button>
+                <p id="timer-personal" class="timer-text"></p>
+                <div class="card-actions">
+                    <button class="reset-btn" onclick="resetStreak('personal')">Reiniciar ↻</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="side-column">
+            <div class="streak-card friends">
+                <h3>Metas y Amigos (@)</h3>
+                <div id="dynamic-streaks-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <main id="tab-profile" class="dashboard hidden">
+        <div class="profile-container">
+            <div class="streak-card profile-main-card">
+                <div class="profile-header">
+                    <div class="avatar-edit-wrapper">
+                        <img id="profile-img-preview" src="https://via.placeholder.com/150" alt="Profile">
+                        <label for="imageInput" class="edit-icon">✎</label>
+                        <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)" style="display:none;">
+                    </div>
+                    <div class="profile-info-inputs">
+                        <input type="text" id="input-username" placeholder="Nombre de usuario" class="profile-input user-name-input">
+                        <textarea id="input-bio" placeholder="Tu descripción..." class="profile-input bio-input"></textarea>
+                    </div>
+                </div>
+                <button onclick="saveProfile()" class="action-btn save-btn">Guardar Cambios</button>
+            </div>
+
+            <div class="streak-card create-streak-zone">
+                <div class="zone-header">🚀 <h3>Nueva Meta</h3></div>
+                <p class="zone-desc">Usa <b>@nombre</b> para rachas que requieren de un amigo.</p>
+                <div class="input-group">
+                    <input type="text" id="new-streak-name" placeholder="Ej: @Sofia - Gym" class="profile-input">
+                    <button onclick="addNewStreak()" class="add-streak-btn">Crear Racha</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
